@@ -12,9 +12,7 @@ function App() {
     setHappiness(false);
     console.log(happy)
   })
-  const redirect = (link)=>{
-    history.push(link)
-  }
+  
   return (
     <Layout>
       <BrowserRouter>
@@ -23,7 +21,7 @@ function App() {
               exact
               path="/"
               component={() => (
-                <Home happy={happy} redirect={redirect} />
+                <Home happy={happy} />
               )}
             />
             <Route

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,12 +22,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavBar({redirect, ...props}) {
+export default function NavBar(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   React.useEffect(() => {
 
   }, [props])
+
+  const redirect = (link)=>{
+    history.push(link)
+  }
 
   return (
     <div className={classes.root}>
