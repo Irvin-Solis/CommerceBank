@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Home() {
+export default function SignIn(props) {
 
     return (
         <div>
-            Poopy Head
+            I Feel Pain
         </div>
     )
 }

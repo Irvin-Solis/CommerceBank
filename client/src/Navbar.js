@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '@material-ui/core/Drawer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +21,12 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ButtonAppBar() {
+export default function NavBar({redirect, ...props}) {
   const classes = useStyles();
-  const [isOpen, setDrawer] = useState(false);
+
+  React.useEffect(() => {
+
+  }, [props])
 
   return (
     <div className={classes.root}>
@@ -39,7 +40,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Banking
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={redirect("/SignIn")}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>
