@@ -30,15 +30,12 @@ export default function NavBar(props) {
 
   }, [props])
 
-  const redirect = (link)=>{
-    history.push(link)
-  }
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.barStyle}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={() =>{history.push("/")}}>
           <Typography variant="h6" className={classes.title}>
             Commerce Bank
           </Typography>
@@ -46,7 +43,7 @@ export default function NavBar(props) {
           <Typography variant="h6" className={classes.title}>
             Banking
           </Typography>
-          <Button color="inherit" onClick={redirect("/SignIn")}>Login</Button>
+          <Button color="inherit" onClick={()=>{history.push("/SignIn")}}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

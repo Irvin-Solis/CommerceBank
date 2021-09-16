@@ -15,24 +15,22 @@ function App() {
   
   return (
     <Layout>
-      <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              component={() => (
-                <Home happy={happy} />
-              )}
-            />
-            <Route
-              exact
-              path="/SignIn"
-              component={() => (
-                <SignIn happy={happy} />
-              )}
-            />
-          </Switch>
-      </BrowserRouter>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <Home happy={happy} />
+            )}
+          />
+          <Route
+            exact
+            path="/SignIn"
+            component={() => (
+              <SignIn happy={happy} />
+            )}
+          />
+        </Switch>
     </Layout>
   );
 }
