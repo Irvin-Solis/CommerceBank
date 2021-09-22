@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import CommerceLogo from './CommerceLogo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   barStyle: {
-    background : '#4CB848' // commerce bank color or whatever
+    background : '#006747' // commerce bank color or whatever
   }
 }));
 
@@ -35,7 +36,7 @@ export default function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.barStyle}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" onClick={() =>{history.push("/")}}>
+          <IconButton className={classes.menuButton} color="inherit" onClick={() =>{history.push("/")}}>
           <Typography variant="h6" className={classes.title}>
             Commerce Bank
           </Typography>

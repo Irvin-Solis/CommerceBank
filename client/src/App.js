@@ -3,18 +3,21 @@ import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import Layout from './Layout';
 import Home from "./pages/Home";
 import SignIn from './pages/SignIn';
+import Transactions from './pages/Transactions';
+import Account from './pages/Account';
 import './App.css';
 
 function App() {
   const history = useHistory();
   const [happy, setHappiness] = useState(null);
+  const [signIn, setSignIn] = useState(false);
   useEffect(() => {
     setHappiness(false);
     console.log(happy)
   })
   
   return (
-    <Layout>
+    <Layout signIn={signIn}>
         <Switch>
           <Route
             exact
@@ -28,6 +31,13 @@ function App() {
             path="/SignIn"
             component={() => (
               <SignIn happy={happy} />
+            )}
+          />
+          <Route
+            exact
+            path="/Account"
+            component={() => (
+              <Account happy={happy} />
             )}
           />
         </Switch>
