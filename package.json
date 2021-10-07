@@ -4,7 +4,8 @@
   "description": "React Website for CS431R",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Irvin-Solis/CommerceBank/issues"
   },
-  "homepage": "https://github.com/Irvin-Solis/CommerceBank#readme"
+  "homepage": "https://github.com/Irvin-Solis/CommerceBank#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
