@@ -4,9 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import CommerceLogo from './CommerceLogo.png';
+import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,15 +34,10 @@ export default function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.barStyle}>
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" onClick={() =>{history.push("/")}}>
-          <Typography variant="h6" className={classes.title}>
-            Commerce Bank
+          <AccountBalanceTwoToneIcon fontSize="large"/> 
+          <Typography variant="h5" className={classes.title}>
+            Commerce Bank 
           </Typography>
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Banking
-          </Typography>
-          <Button color="inherit" onClick={()=>{history.push("/SignIn")}}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

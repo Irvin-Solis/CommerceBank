@@ -8,13 +8,9 @@ import Account from './pages/Account';
 import './App.css';
 
 function App() {
-  const history = useHistory();
   const [happy, setHappiness] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [signIn, setSignIn] = useState(false);
-  useEffect(() => {
-    setHappiness(false);
-    console.log(happy)
-  })
   
   return (
     <Layout signIn={signIn}>
@@ -28,16 +24,16 @@ function App() {
           />
           <Route
             exact
-            path="/SignIn"
+            path="/Transaction"
             component={() => (
-              <SignIn happy={happy} />
+              <Transactions happy={happy} />
             )}
           />
           <Route
             exact
             path="/Account"
             component={() => (
-              <Account happy={happy} />
+              <Account happy={happy} userInfo={userInfo} />
             )}
           />
         </Switch>
