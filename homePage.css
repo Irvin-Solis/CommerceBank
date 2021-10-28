@@ -1,0 +1,30 @@
+body {
+  background: #dedede;
+  font-family: arial;
+  margin: 0;
+  padding: 0;
+  color: #006747;
+  font-family: 'Poppins';s
+}
+
+.dropdwn {
+  margin: 0 auto;
+}
+
+#logo{
+	position:fixed;
+	top:0;
+	left:0;
+}
+
+.wrapper {
+  background: url(bank.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+.wrapper .center {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
