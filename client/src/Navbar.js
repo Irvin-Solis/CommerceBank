@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'reactn';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar(props) {
   const classes = useStyles();
-  const history = useHistory();
 
   React.useEffect(() => {
 

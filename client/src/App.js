@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
+import React, { useState, useEffect, setGlobal } from 'reactn';
+import { Switch, Route } from "react-router-dom";
 import Layout from './Layout';
 import Home from "./pages/Home";
 import SignIn from './pages/SignIn';
 import Transactions from './pages/Transactions';
 import Account from './pages/Account';
+import ProtectedRoute from './ProtectedRoute';
 import './App.css';
 
 function App() {
   const [happy, setHappiness] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-  const [signIn, setSignIn] = useState(false);
-  
+  setGlobal({
+    signedIn: true
+  });
+    
   return (
-    <Layout signIn={signIn}>
+    <Layout>
         <Switch>
           <Route
             exact
@@ -22,14 +25,14 @@ function App() {
               <Home happy={happy} />
             )}
           />
-          <Route
+          <ProtectedRoute
             exact
-            path="/Transaction"
+            path="/Transactions"
             component={() => (
               <Transactions happy={happy} />
             )}
           />
-          <Route
+          <ProtectedRoute
             exact
             path="/Account"
             component={() => (
