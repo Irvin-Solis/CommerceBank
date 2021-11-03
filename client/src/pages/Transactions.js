@@ -4,7 +4,7 @@ const Transactions = (props) => {
 
     return (
         <div>
-            weeeeeeeeee
+            Hello There
         </div>
     )
 }

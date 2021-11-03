@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,9 +33,9 @@ export default function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.barStyle}>
         <Toolbar>
-          <AccountBalanceTwoToneIcon fontSize="large"/> 
+          <AccountBalanceIcon sx={{ fontSize: 25 }}/> 
           <Typography variant="h5" className={classes.title}>
-            Commerce Bank 
+          &nbsp;Mobile Bank 
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,10 +1,11 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
 
 export default function Account(props) {
 
     return (
-        <div>
-            Your signed in
-        </div>
+        <Grid container spacing={2}>
+            
+        </Grid>
     )
 }
