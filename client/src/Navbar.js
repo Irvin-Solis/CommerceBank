@@ -1,12 +1,10 @@
-import React from 'react';
+import React from 'reactn';
 import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import CommerceLogo from './CommerceLogo.png';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar(props) {
   const classes = useStyles();
-  const history = useHistory();
 
   React.useEffect(() => {
 
@@ -36,15 +33,10 @@ export default function NavBar(props) {
     <div className={classes.root}>
       <AppBar position="static" className={classes.barStyle}>
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" onClick={() =>{history.push("/")}}>
-          <Typography variant="h6" className={classes.title}>
-            Commerce Bank
+          <AccountBalanceIcon sx={{ fontSize: 25 }}/> 
+          <Typography variant="h5" className={classes.title}>
+          &nbsp;Mobile Bank 
           </Typography>
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Banking
-          </Typography>
-          <Button color="inherit" onClick={()=>{history.push("/SignIn")}}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>

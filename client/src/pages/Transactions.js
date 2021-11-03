@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function Transactions(props) {
+const Transactions = (props) => {
 
     return (
         <div>
-            weeeeeeeeee
+            Hello There
         </div>
     )
 }
+
+export default Transactions;
