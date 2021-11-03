@@ -15,8 +15,13 @@
   border-radius: 60px;
   background-color: white
 }
-.user{
-  padding-top: 30px;
-  font: "Open Sans"
-
+.profile{
+  padding-top:25px;
+}
+.link{
+  font-size: 15px;
+  font-weight: 400;
+}
+a{
+  color: blue;
 }
