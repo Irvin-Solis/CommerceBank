@@ -11,7 +11,7 @@ export default function Layout(props) {
             <NavBar 
                 {...props}
             />
-            <Container>
+            <Container style={{ marginTop: "2%", marginBottom: "20%" }}>
                 {props.children}
             </Container>
       </div>
