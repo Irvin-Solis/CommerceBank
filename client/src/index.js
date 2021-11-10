@@ -2,13 +2,41 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import DarkTheme from "./darkTheme";
+import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+
+const darkState = true;
+const palletType = darkState ? "dark" : "light";
+const backgroundColor = darkState ? "#0A1928" : "#fff";
+const textColor=!darkState? "#0A1928" : "#fff";
+const theme = createTheme({
+  palette: {
+    mode: palletType,
+    primary: {
+        main: textColor,
+        textColor: textColor
+    },
+    secondary: {
+        main: '#f44336',
+    },
+    background: {
+        default: backgroundColor,
+        paper: backgroundColor
+    },
+    text:{
+        primary: textColor,
+    }
+}
+});
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ThemeProvider theme={theme}>
       <App />
+    </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
