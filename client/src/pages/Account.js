@@ -1,40 +1,30 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import Typography from '@material-ui/core/Typography';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    grid: {
+        marginTop: 10
+    }
+  }));
 
 export default function Account(props) {
+    const classes = useStyles();
 
-    const userAccounts = ["211111111", "4111111111"];
-    const style = {
-        width: '100%',
-        maxWidth: 360,
-        bgcolor: 'background.paper',
-      };
     return (
-        <div>
-            <Grid container spacing={2} justifyContent="center"  style={{ marginBottom: "5%" }}>
-                <Grid item xs="auto"/>
-                <Grid item  xs={5} justifyContent="center">
-                    <Typography variant="h3">
-                        Account Information
-                    </Typography>
+        <div className={classes.root}>
+            <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
+                <Grid item xl={1} lg={1} md={1} sm={1} xs={1} />
+                <Grid item component={Paper} className={classes.grid} xl={10} lg={10} md={10} sm={10} xs={10}>
+                    heowgiunp
                 </Grid>
-                <Grid item xs="auto"/>
-            </Grid>
-            <Grid container spacing={2} justifyContent="center">
-                <List sx={style} component="nav" aria-label="mailbox folders">
-                    <ListItem button>
-                        <ListItemText primary="Checking Acc: 211111111" />
-                    </ListItem>
-                    <Divider />
-                    <ListItem button>
-                        <ListItemText primary="Saving Acc: 4111111111" />
-                    </ListItem>
-                </List>
+                <Grid item xl={1} lg={1} md={1} sm={1} xs={1}/>
             </Grid>
         </div>
     )
