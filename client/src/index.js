@@ -7,9 +7,9 @@ import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 
-const darkState = true;
+const darkState = false;
 const palletType = darkState ? "dark" : "light";
-const backgroundColor = darkState ? "#0A1928" : "#fff";
+const backgroundColor = darkState ? "#0A1928" : "#ededed";
 const textColor=!darkState? "#0A1928" : "#fff";
 const theme = createTheme({
   palette: {
@@ -23,7 +23,7 @@ const theme = createTheme({
     },
     background: {
         default: backgroundColor,
-        paper: backgroundColor
+        paper: "#fff"
     },
     text:{
         primary: textColor,
