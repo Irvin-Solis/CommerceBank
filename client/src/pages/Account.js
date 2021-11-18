@@ -22,11 +22,11 @@ export default function Account(props) {
         <div className={classes.root}>
             <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
                 <Grid item xl={1} lg={1} md={1} sm={1} xs={1} />
-                <Grid item component={Paper} className={classes.grid} xl={10} lg={10} md={10} sm={10} xs={10}>
+                <Grid item component={Paper} className={classes.grid} xl={10} lg={10} md={10} sm={10} xs={10} >
                     <Typography variant="h4" align="center" gutterBottom>
                         Welcome {user}
                     </Typography>
-                    <Grid container spacing={2} justifyContent="center">
+                    <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
                         <Grid item backgroundColor="blue">
                             <Box
                                 sx={{

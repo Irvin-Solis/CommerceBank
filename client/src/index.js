@@ -6,8 +6,11 @@ import DarkTheme from "./darkTheme";
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import homeBackground from './homeBackground.png';
 
-const darkState = false;
+let loginStatus = false;
+
+const darkState = true;
 const palletType = darkState ? "dark" : "light";
 const backgroundColor = darkState ? "#0A1928" : "#ededed";
 const textColor=!darkState? "#0A1928" : "#fff";
@@ -34,9 +37,13 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    { loginStatus ? 
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider> : 
+      <div styles={{ backgroundImage:`url(${homeBackground})` }}>
+        <App />
+      </div> }
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

@@ -12,7 +12,7 @@ app.get('/api/status', (req, res) => res.send('Working!'));
 
 app.get('/api/getTransactions', (req, res) => {
   connection.query(
-    'SELECT * FROM transactions',
+    'SELECT * FROM accounts',
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));

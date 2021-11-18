@@ -6,7 +6,6 @@ import SignIn from './pages/SignIn';
 import Transactions from './pages/Transactions';
 import Account from './pages/Account';
 import ProtectedRoute from './ProtectedRoute';
-import './App.css';
 
 function App() {
   const [happy, setHappiness] = useState(null);
