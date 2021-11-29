@@ -6,13 +6,10 @@ import DarkTheme from "./darkTheme";
 import { ThemeProvider, createTheme } from '@material-ui/core/styles'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import homeBackground from './homeBackground.png';
 
-let loginStatus = false;
-
-const darkState = true;
+let darkState = false;
 const palletType = darkState ? "dark" : "light";
-const backgroundColor = darkState ? "#0A1928" : "#ededed";
+const backgroundColor = darkState ? "#0A1928" : "#fff";
 const textColor=!darkState? "#0A1928" : "#fff";
 const theme = createTheme({
   palette: {
@@ -26,7 +23,7 @@ const theme = createTheme({
     },
     background: {
         default: backgroundColor,
-        paper: "#fff"
+        paper: backgroundColor
     },
     text:{
         primary: textColor,
@@ -34,18 +31,17 @@ const theme = createTheme({
 }
 });
 
+const handleThemeChange = () => {
+  darkState = !darkState
+  console.log(darkState)
+};
+
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
-    { loginStatus ? 
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider> : 
-      <div styles={{ backgroundImage:`url(${homeBackground})` }}>
-        <App />
-      </div> }
-    </BrowserRouter>
-  </React.StrictMode>,
+    <ThemeProvider theme={theme}>
+      <App handleThemeChange={handleThemeChange} darkState={darkState}/>
+    </ThemeProvider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
