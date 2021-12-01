@@ -10,9 +10,9 @@ app.use(cors());
 
 app.get('/api/status', (req, res) => res.send('Working!'));
 
-app.get('/api/getTransactions', (req, res) => {
+app.get('/api/getTransactions/:id', (req, res) => {
   connection.query(
-    'SELECT * FROM transactions',
+    'SELECT * FROM transactions WHERE account_num=?', req.params.id,
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));
