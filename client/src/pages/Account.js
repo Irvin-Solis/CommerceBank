@@ -7,6 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Account(props) {
     const classes = useStyles();
+
+    const userAccounts = [ '4111111111', '2147483647'];
+
     useEffect(() => {
         console.log(props.darkState)
     }, [props.darkState]); 
@@ -46,18 +52,34 @@ export default function Account(props) {
                         <Divider />
                     </div>
                 </Grid>
-                <Grid item component={Paper} spacing={2} className={classes.grid} xl={7} lg={7} md={7} sm={7} xs={7}>
+                <Grid item component={Paper} spacing={2} className={classes.grid} xl={8} lg={8} md={8} sm={8} xs={8}>
                     <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
+                        <Box component={Paper} elevation={0}
+                            sx={{
+                                width: 1
+                            }}>
+                        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
+                            <Typography variant="h5">Accounts</Typography>
+                        </Grid>
                         <Grid item xl={1} lg={1} md={1} sm={1} xs={1}/>
-                        <Grid item xl={10} lg={10} md={10} sm={10} xs={10}>
-                            rehgwrt
+                        <Grid item xl={10} lg={10} md={10} sm={10} xs={10} >
+
+                            <Grid container > 
+                                {userAccounts.map(item => 
+
+
+                                    <Typography>{item}</Typography>
+
+                            )}
+                            </Grid>
                         </Grid>
                         <Grid item xl={1} lg={1} md={1} sm={1} xs={1}>
-                            
+
                         </Grid>
+                        </Box>
                     </Grid>
                 </Grid>
-                <Grid item xl={1} lg={1} md={1} sm={1} xs={1}/>
+                <Grid item xl={0} lg={0} md={0} sm={0} xs={0}/>
             </Grid>
         </div>
     )
