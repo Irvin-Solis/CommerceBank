@@ -31,7 +31,7 @@ export default function Account(props) {
 
     useEffect(() => {
         console.log(props.darkState)
-    }, [props.darkState]); 
+    }, [props.darkState, userAccounts]); 
    
     return (
         <div className={classes.root}>
@@ -52,32 +52,27 @@ export default function Account(props) {
                         <Divider />
                     </div>
                 </Grid>
-                <Grid item component={Paper} spacing={2} className={classes.grid} xl={8} lg={8} md={8} sm={8} xs={8}>
-                    <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
-                        <Box component={Paper} elevation={0}
-                            sx={{
-                                width: 1
-                            }}>
-                        <Grid item xl={12} lg={12} md={12} sm={12} xs={12}>
-                            <Typography variant="h5">Accounts</Typography>
-                        </Grid>
-                        <Grid item xl={1} lg={1} md={1} sm={1} xs={1}/>
-                        <Grid item xl={10} lg={10} md={10} sm={10} xs={10} >
-
-                            <Grid container > 
+                <Grid item spacing={2} className={classes.grid} xl={8} lg={8} md={8} sm={8} xs={8}>
+                    <Grid container spacing={2}> 
                                 {userAccounts.map(item => 
-
-
-                                    <Typography>{item}</Typography>
-
+                                <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+                                    <Card>
+                                        <CardContent>
+                                            <Typography varient="h4">
+                                                <Box sx={{ fontSize: 'h6.fontSize' }}>
+                                                    Checking&nbsp;{item}
+                                                </Box>
+                                            </Typography>
+                                            <Typography varient="h6" align="right">
+                                                <Box sx={{ fontWeight: 'bold', fontSize: 'default'}}>$3456</Box>
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                    
+                                </Grid>
                             )}
-                            </Grid>
-                        </Grid>
-                        <Grid item xl={1} lg={1} md={1} sm={1} xs={1}>
-
-                        </Grid>
-                        </Box>
                     </Grid>
+
                 </Grid>
                 <Grid item xl={0} lg={0} md={0} sm={0} xs={0}/>
             </Grid>

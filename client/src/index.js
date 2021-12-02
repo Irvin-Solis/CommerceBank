@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 
 let darkState = false;
 const palletType = darkState ? "dark" : "light";
-const backgroundColor = darkState ? "#0A1928" : "#fff";
+const backgroundColor = darkState ? "#dbdbdb" : "#fff";
 const textColor=!darkState? "#0A1928" : "#fff";
 const theme = createTheme({
   palette: {
