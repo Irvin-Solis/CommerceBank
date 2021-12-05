@@ -20,6 +20,16 @@ app.get('/api/getTransactions/:id', (req, res) => {
   );
 });
 
+app.get('/api/getusers', (req, res) => {
+  connection.query(
+    'SELECT * FROM commerce.users',
+    function(err, result) {
+      if (err) throw err;
+      console.log(res.json(result));
+    }
+  );
+});
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })
