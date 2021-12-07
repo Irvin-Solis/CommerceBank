@@ -1,5 +1,6 @@
-import {React, useEffect, useState} from 'react';
+import { React, useEffect, useState, useGlobal } from 'reactn';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
@@ -14,6 +15,8 @@ import Checkbox from '@mui/material/Checkbox';
 import LocalAtmTwoToneIcon from '@mui/icons-material/LocalAtmTwoTone';
 import AccountBalanceTwoToneIcon from '@mui/icons-material/AccountBalanceTwoTone';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,13 +60,55 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(props) {
     const classes = useStyles();
+    const history = useHistory();
     const [windowWidth , setWidth] = useState(null);
+    const [userId, setId] = useState(null);
+    const [userPass, setPass] = useState(null);
+    const [note, setNote] = useState(false);
+    const [auth, setAuth] = useGlobal('signedIn');
+    
+    const login = async () =>{
+        checkCred()
+    }
+
+    const checkCred = async () =>{
+        let validUser = false;
+        let validCred = false;
+        fetch('http://localhost:5000/api/getUserID/' + userId)
+        .then((res) => res.json())
+        .then((data) =>{
+          if(data.length != 0 && data[0]['user_id'] == userId) { validUser = true }
+        })
+        fetch('http://localhost:5000/api/getUserPass/' + userPass)
+        .then((res) => res.json())
+        .then((data) =>{
+          if(data.length != 0 && data[0]['user_id'] == userId) { validCred = true }
+
+          if(validUser && validCred) { 
+            setAuth(true);
+            history.push('/Account')
+            }
+            else{
+                setNote(true);
+            }
+        })
+
+    }
+
+
     useEffect(() => {
         setWidth(window.innerWidth)
-    })
+        if(auth){ history.push('/Account') }
+        
+    }, [auth])
 
     return (
         <div>
+            <Snackbar open={note} autoHideDuration={1000} onClose={()=>{setNote(false)}}>
+                <Alert onClose={()=>{setNote(false)}} severity="error" >
+                    Incorrect Username or Password!
+                </Alert>
+            </Snackbar>
             <Grid container >
                 <Grid item xl={4} lg={4} md={4} sm={3} xs={'auto'}/>
                 <Grid item xl={4} lg={4} md={4} sm={6} xs={12}>
@@ -91,14 +136,17 @@ export default function Home(props) {
                                             <TextField
                                                 required
                                                 label="Login ID"
+                                                onChange={(event)=>{setId(event.target.value)}}
                                             />
                                             <TextField
                                                 required
                                                 label="Password"
+                                                type="password"
+                                                onChange={(event)=>{setPass(event.target.value)}}
                                             />
                                             <FormControlLabel control={<Checkbox />} label="Remember me"/>
-                                            <Button variant="outlined" className={classes.body}>Sign In</Button>
-                                        </FormControl>  
+                                            <Button onClick={login} variant="outlined" className={classes.body}>Sign In</Button>  
+                                        </FormControl> 
                                     </CardContent>
                                 </Card>
                             </Box>

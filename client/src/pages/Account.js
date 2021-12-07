@@ -39,8 +39,11 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'Open Sans'
     },
     formControl: {
-        margin: theme.spacing(2),
-        minWidth: "25vw",
+        '& > *': {
+            margin: theme.spacing(2),
+        },
+        display: 'flex',
+        justifyContent: 'center'
       }
   }));
 
@@ -76,20 +79,22 @@ export default function Account(props) {
                             '*3647': '3465'};
 
     useEffect(() => {
-        console.log(props.darkState)
         setWindowWidth(window.innerWidth)
         console.log(windowWidth)
     }, [props.darkState, userAccounts, accounts, fromAcc, toAcc]); 
    
     return (
         <div className={classes.root}>
+            {windowWidth <= 750 ?
+                <IconButton>
+                    <DehazeIcon/>
+                </IconButton> :
+                <div/>}
             <Box  bgcolor="#e6e6e6" sx={{ borderRadius: 16, pb: 8 }} >
             <Grid container spacing={2} justifyContent="center" style={{ marginTop: "5%" }}>
                 <Grid item xl={'auto'} lg={'auto'} md={'auto'} sm={'auto'} xs={'auto'}>
                     {windowWidth <= 750 ?
-                        <IconButton>
-                            <DehazeIcon/>
-                        </IconButton>
+                        <div/>
                         :    
                     <div className={classes.sidebar}>
                         <Typography variant="h4" className={classes.heading}>Settings</Typography>
@@ -176,7 +181,7 @@ export default function Account(props) {
                                 </Box>
                             </Grid>
                         )}
-                        <Dialog open={dialog} onClose={handleDialog}  maxWidth='md' fullWidth='true'>
+                        <Dialog open={dialog} onClose={handleDialog}  maxWidth='sm' fullWidth='true'>
                             <DialogTitle>Transer Funds</DialogTitle>
                             <DialogContent>
                                 <FormControl className={classes.formControl}>
@@ -186,7 +191,7 @@ export default function Account(props) {
                                         defaultValue={fromAcc}
                                         value={fromAcc}
                                         onChange={handleChange}
-                                        variant="filled"
+                                        variant="outlined"
                                         margin="dense"
                                         >
                                         {accounts.map((option) => (
@@ -200,7 +205,7 @@ export default function Account(props) {
                                         label="To Account"
                                         value={toAcc}
                                         onChange={handleChange1}
-                                        variant="filled"
+                                        variant="outlined"
                                         margin="dense"
                                         >
                                         {accounts.map((option) => (
