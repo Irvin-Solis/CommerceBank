@@ -6,17 +6,18 @@ import SignIn from './pages/SignIn';
 import Transactions from './pages/Transactions';
 import Account from './pages/Account';
 import ProtectedRoute from './ProtectedRoute';
-import './App.css';
+import '@fontsource/open-sans/400.css';
+import '@fontsource/poppins/400.css';
 
-function App() {
+const App = ({handleThemeChange, darkState}) => {
   const [happy, setHappiness] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   setGlobal({
-    signedIn: true
+    signedIn: false,
   });
     
   return (
-    <Layout>
+    <Layout handleThemeChange={handleThemeChange} darkState={darkState} >
         <Switch>
           <Route
             exact
@@ -36,7 +37,7 @@ function App() {
             exact
             path="/Account"
             component={() => (
-              <Account happy={happy} userInfo={userInfo} />
+              <Account happy={happy} userInfo={userInfo} darkState={darkState} />
             )}
           />
         </Switch>

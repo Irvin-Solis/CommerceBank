@@ -17,7 +17,7 @@ const Transactions = (props) => {
     
     let col = ["trans num", "date", "ammount", "balance", "description"];
 
-    let Tabledata = [["1", "2019-11-04", "", "3000", "deposit"], ["2", "2019-11-08", "45", "3955", "Walmart"]]
+    let Tabledata = [["1", "2019-11-04", "0", "3000", "deposit"], ["2", "2019-11-08", "45", "3955", "Walmart"]]
 
     return (
         <div>

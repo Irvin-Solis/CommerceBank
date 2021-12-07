@@ -12,7 +12,7 @@ app.get('/api/status', (req, res) => res.send('Working!'));
 
 app.get('/api/getTransactions/:id', (req, res) => {
   connection.query(
-    'SELECT * FROM transactions WHERE account_num=?', req.params.id,
+    `SELECT * FROM transactions WHERE account_num=?`, req.params.id,
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));
@@ -20,9 +20,19 @@ app.get('/api/getTransactions/:id', (req, res) => {
   );
 });
 
-app.get('/api/getusers', (req, res) => {
+app.get('/api/getUserId/:id', (req, res) => {
   connection.query(
-    'SELECT * FROM commerce.users',
+    `SELECT user_id FROM users WHERE user_id=?`, req.params.id,
+    function(err, result) {
+      if (err) throw err;
+      console.log(res.json(result));
+    }
+  );
+});
+
+app.get('/api/getUserPass/:pass', (req, res) => {
+  connection.query(
+    `SELECT user_id FROM users WHERE password=?`, req.params.pass,
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));
