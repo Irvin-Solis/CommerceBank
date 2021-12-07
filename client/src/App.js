@@ -6,6 +6,8 @@ import SignIn from './pages/SignIn';
 import Transactions from './pages/Transactions';
 import Account from './pages/Account';
 import ProtectedRoute from './ProtectedRoute';
+import '@fontsource/open-sans/400.css';
+import '@fontsource/poppins/400.css';
 
 const App = ({handleThemeChange, darkState}) => {
   const [happy, setHappiness] = useState(null);
