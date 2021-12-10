@@ -67,7 +67,6 @@ export default function Home(props) {
     const [userPass, setPass] = useState(null);
     const [note, setNote] = useState(false);
     const [auth, setAuth] = useGlobal('signedIn');
-
     const login = async () =>{
         checkCred()
     }
@@ -116,8 +115,6 @@ export default function Home(props) {
     useEffect(() => {
         setWidth(window.innerWidth)
         if(auth){ history.push('/Account') }
-
-
         
     }, [auth])
 

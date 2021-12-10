@@ -117,7 +117,7 @@ export default function Account(props) {
                     </div>}
                 </Grid>
                 <Grid item className={classes.grid} xl={8} lg={8} md={8} sm={8} xs={8}>
-                    <Typography variant="h5" className={classes.heading}>Good Evening, DaKing</Typography>
+                    <Typography variant="h5" className={classes.heading}>Good Evening, User</Typography>
                     <Typography variant="h4" className={classes.heading} style={{ paddingBottom: 6 }}>Accounts</Typography>
                     <Grid container spacing={2}>
                             {Object.keys(userAccounts).map((key, _) => 
@@ -222,6 +222,7 @@ export default function Account(props) {
                                 </FormControl>
                             </DialogContent>
                                             <Button>Transfer</Button>
+
                             <DialogActions>
                                 
                             </DialogActions>
