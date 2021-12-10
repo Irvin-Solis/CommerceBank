@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useGlobal } from 'reactn';
+import { React, useEffect, useState, useGlobal, setGlobal } from 'reactn';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router';
 import Grid from '@mui/material/Grid';
@@ -63,10 +63,11 @@ export default function Home(props) {
     const history = useHistory();
     const [windowWidth , setWidth] = useState(null);
     const [userId, setId] = useState(null);
+    const [username, setUsername] = useState(null);
     const [userPass, setPass] = useState(null);
     const [note, setNote] = useState(false);
     const [auth, setAuth] = useGlobal('signedIn');
-    
+
     const login = async () =>{
         checkCred()
     }
@@ -74,31 +75,49 @@ export default function Home(props) {
     const checkCred = async () =>{
         let validUser = false;
         let validCred = false;
-        fetch('http://localhost:5000/api/getUserID/' + userId)
+        fetch('http://localhost:5000/api/getUser/' + userId)
         .then((res) => res.json())
         .then((data) =>{
-          if(data.length != 0 && data[0]['user_id'] == userId) { validUser = true }
+            console.log(data)
+          if(data.length != 0 && data[0]['user_id'] == userId) { 
+              validUser = true
+              setUsername(data[0]['username'])
+             }
         })
         fetch('http://localhost:5000/api/getUserPass/' + userPass)
         .then((res) => res.json())
         .then((data) =>{
           if(data.length != 0 && data[0]['user_id'] == userId) { validCred = true }
 
-          if(validUser && validCred) { 
+          if(validUser && validCred) {
+              let acc = []
             setAuth(true);
-            history.push('/Account')
+            fetch('http://localhost:5000/api/getUserAccounts/' +userId)
+            .then((res) => res.json())
+            .then((data) =>{
+                data.map(item =>{
+                    acc.push(item['account_num'])
+                })
+                setGlobal({
+                    "user_id": userId,
+                    "username": username,
+                    "userAccounts": acc
+                  });
+                history.push('/Account')
+              })
             }
             else{
                 setNote(true);
             }
         })
-
     }
 
 
     useEffect(() => {
         setWidth(window.innerWidth)
         if(auth){ history.push('/Account') }
+
+
         
     }, [auth])
 

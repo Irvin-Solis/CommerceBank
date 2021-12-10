@@ -13,7 +13,7 @@ const App = ({handleThemeChange, darkState}) => {
   const [happy, setHappiness] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   setGlobal({
-    signedIn: false,
+    signedIn: true,
   });
     
   return (

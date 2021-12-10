@@ -20,9 +20,9 @@ app.get('/api/getTransactions/:id', (req, res) => {
   );
 });
 
-app.get('/api/getUserId/:id', (req, res) => {
+app.get('/api/getUser/:id', (req, res) => {
   connection.query(
-    `SELECT user_id FROM users WHERE user_id=?`, req.params.id,
+    `SELECT user_id, username FROM users WHERE user_id=?`, req.params.id,
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));
@@ -33,6 +33,26 @@ app.get('/api/getUserId/:id', (req, res) => {
 app.get('/api/getUserPass/:pass', (req, res) => {
   connection.query(
     `SELECT user_id FROM users WHERE password=?`, req.params.pass,
+    function(err, result) {
+      if (err) throw err;
+      console.log(res.json(result));
+    }
+  );
+});
+
+app.get('/api/getUserAccounts/:id', (req, res) => {
+  connection.query(
+    `SELECT account_num FROM accounts WHERE user_id=?`, req.params.id,
+    function(err, result) {
+      if (err) throw err;
+      console.log(res.json(result));
+    }
+  );
+});
+
+app.get('/api/username/:id', (req, res) => {
+  connection.query(
+    `SELECT username FROM users WHERE user_id=?`, req.params.id,
     function(err, result) {
       if (err) throw err;
       console.log(res.json(result));
