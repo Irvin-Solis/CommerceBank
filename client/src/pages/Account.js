@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from 'react';
+import {React, useEffect, useState, useGlobal} from 'reactn';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -19,6 +19,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Account(props) {
     const classes = useStyles();
     const history = useHistory();
+    const [userAcc, setAccounts] = useGlobal('userAccounts');
+    const [username, setUsername] = useGlobal('username');
     const [windowWidth, setWindowWidth] = useState(null);
     const [menu, setMenu] = useState(false);
     const [dialog, setDialog] = useState(false);
@@ -81,7 +84,9 @@ export default function Account(props) {
     useEffect(() => {
         setWindowWidth(window.innerWidth)
         console.log(windowWidth)
-    }, [props.darkState, userAccounts, accounts, fromAcc, toAcc]); 
+        console.log(userAcc)
+        console.log(username)
+    }, [props.darkState, userAccounts, accounts, username]); 
    
     return (
         <div className={classes.root}>
@@ -216,6 +221,8 @@ export default function Account(props) {
                                     </TextField>
                                 </FormControl>
                             </DialogContent>
+                                            <Button>Transfer</Button>
+
                             <DialogActions>
                                 
                             </DialogActions>
